@@ -1,0 +1,25 @@
+{
+  "name": "aws-serverless-starter",
+  "version": "1.0.0",
+  "description": "A production-ready, open-source boilerplate for building scalable, robust, and cost-effective serverless APIs on AWS.",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "biome check .",
+    "format": "biome format . --write",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^26.1.1",
+    "husky": "9.1.7",
+    "serverless": "4.6.0",
+    "typescript": "5.7.3",
+    "vitest": "3.0.4"
+  },
+  "dependencies": {
+    "@middy/core": "6.0.0",
+    "@middy/http-json-body-parser": "6.0.0",
+    "@middy/http-response-serializer": "6.0.0"
+  }
+}

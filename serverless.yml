@@ -1,0 +1,16 @@
+service: aws-serverless-starter
+
+provider:
+  name: aws
+  runtime: nodejs24.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+
+# Serverless Framework v4 native TypeScript build
+package:
+  individually: true
+
+functions:
+  # Handlers will be defined here in later phases
+  dummy:
+    handler: src/infra/handlers/http/dummy.handler
