@@ -1,47 +1,80 @@
-# AWS Serverless Starter (Node.js 24 + TypeScript)
+git r# AWS Serverless Starter
+
+![Build Status](https://img.shields.io/badge/build-pending-yellow)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![TypeScript](https://img.shields.io/badge/typescript-strict-blue)
 
 A production-ready, open-source boilerplate for building scalable, robust, and cost-effective serverless APIs on AWS. Built with modern tooling, strict engineering standards, and clean architecture principles.
 
 ---
 
-## Tech Stack
+## Overview
 
-- **Runtime:** Node.js 24 (LTS)
-- **Language:** TypeScript (Strict Mode)
-- **Deployment & Package Tool:** Serverless Framework v4 (Native TypeScript/ESM Bundling)
-- **AWS Services:** Lambda, API Gateway (HTTP API), DynamoDB, EventBridge, CloudWatch
-- **Testing:** Vitest (Native ESM and TS unit & integration testing)
-- **Quality & Style:** Biome (Super-fast linter, formatter, and import organizer in Rust)
-- **Git Hooks:** Husky & lint-staged for pre-commit verification
-- **SDK:** AWS SDK v3 (Modular, lightweight client libraries)
-- **Middleware:** Middy (Functional middleware engine)
+`aws-serverless-starter` provides a reusable, highly-opinionated foundation for AWS Serverless development. It is designed for engineers who prioritize maintainability, testability, and fast iteration speeds without the overhead of container-based local emulation or complex framework dependencies.
 
----
+## Key Features
 
-## Architecture Goals & Philosophy
-
-This starter is built around **Clean Architecture** adapted for AWS Lambda and combined with **Functional Programming (FP)** concepts. 
-
-1. **Clean Architecture Separation:** Keep core business rules isolated from frameworks, databases, and delivery mechanisms (Lambda, API Gateway). This makes your business logic extremely easy to test, maintain, and port to other cloud providers or containers if ever needed.
-2. **Functional Programming Preferred:** We favor pure functions, immutability, explicit parameter passing for dependency injection, and declarative data flows. This reduces runtime side effects and simplifies reasoning about the code.
-3. **Native ESM Only:** No CommonJS. Node.js 24 runs ES Modules natively, which offers better performance, smaller bundle sizes (via aggressive tree-shaking), and access to the modern JS/TS ecosystem.
-4. **No Container / No LocalStack Dependency:** Develop and test instantly using blazing-fast local unit tests with mocked boundaries, combined with lightweight, real-cloud sandbox deployments. Avoid the heavy overhead of Docker and LocalStack.
-5. **Zero Unnecessary Dependencies:** Keep the node modules lightweight. Avoid bloated ORMs, heavy injection frameworks, or multiple compilation steps.
+*   **Clean Architecture:** Strict decoupling of business domain, use cases, adapters, and infrastructure.
+*   **Functional First:** Leverages pure functions, immutability, and railway-oriented error handling (`Result<T, E>`).
+*   **ESM-Native:** Pure ES Modules for better performance and modern JS/TS ecosystem compatibility.
+*   **Zero Infrastructure Bloat:** No Docker, No LocalStack, No Terraform, No CDK.
+*   **Performant Tooling:** Built on Biome (linting/formatting), Vitest (testing), and Serverless Framework v4.
 
 ---
 
-## Documentation Index
+## Technology Stack
 
-Explore the detailed architecture, guides, and conventions of the project:
-
-- 📂 [**Project Folder Structure**](docs/folder-structure.md) — Understanding the Clean Architecture directories and boundaries.
-- 📐 [**Architectural Decisions (ADRs)**](docs/architectural-decisions.md) — Documented architectural choices (ESM, Serverless v4, FP + Clean Architecture, etc.).
-- 🏷️ [**Naming Conventions**](docs/naming-conventions.md) — Code, file, environment variable, and AWS resource naming rules.
-- 🗺️ [**Development Roadmap**](docs/development-roadmap.md) — The step-by-step phased plan for building this starter.
-- 🚀 [**Future Roadmap**](docs/future-roadmap.md) — Production-hardening, security, caching, observability, and enterprise features.
+*   **Runtime:** Node.js 24 (LTS)
+*   **Language:** TypeScript (Strict Mode)
+*   **Frameworks:** Serverless Framework v4 (Native ESM/TS support), Middy (Middleware engine)
+*   **Infrastructure:** AWS Lambda, API Gateway, DynamoDB, EventBridge, CloudWatch
+*   **Testing:** Vitest
+*   **Quality & Style:** Biome
+*   **Automation:** Husky
 
 ---
 
-## Getting Started (Placeholder)
+## Architecture
 
-*(Note: Code files and configurations will be initialized in subsequent phases of the development roadmap. This section will be updated with setup, testing, and deployment commands.)*
+This project strictly adheres to Clean Architecture boundaries. Business logic is pure and entirely independent of AWS infrastructure.
+
+```text
+[ Infra (Handlers, DDB Gateways, AWS Clients) ]
+                    ↓
+   [ Adapters (Controllers, Presenters) ]
+                    ↓
+[ Core: Use Cases (FP, Pipeline, Result Return) ]
+                    ↓
+     [ Core: Domain (Pure entities & types) ]
+```
+
+*See [Project Folder Structure](docs/folder-structure.md) for full implementation details.*
+
+---
+
+## Getting Started
+
+*(Note: Implementation phase is forthcoming. Code generation and configuration steps will be added to this section in the next development cycle.)*
+
+Please see our [Development Roadmap](docs/development-roadmap.md) to understand the upcoming phases.
+
+---
+
+## Documentation
+
+*   [**Project Folder Structure**](docs/folder-structure.md)
+*   [**Architectural Decisions (ADRs)**](docs/architectural-decisions.md)
+*   [**Naming Conventions**](docs/naming-conventions.md)
+*   [**Development Roadmap**](docs/development-roadmap.md)
+*   [**Future Roadmap**](docs/future-roadmap.md)
+*   [**AI Contributor Guide (AGENTS.md)**](AGENTS.md)
+
+---
+
+## Contributing
+
+We welcome contributions! Please review our [AI Contributor Guide](AGENTS.md) to understand our engineering standards, architectural boundaries, and coding conventions. All code must pass Biome linting and all unit tests before submission.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
