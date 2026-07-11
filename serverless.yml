@@ -28,26 +28,25 @@ package:
     - 'dist/**'
 
 functions:
-  # Examples of function-level configuration with IAM roles
-  # We will populate these as we develop the core logic.
-
-  # example-function:
-  #   handler: src/infra/handlers/http/example.handler
-  #   role: ExampleFunctionRole
-  #   events:
-  #     - httpApi:
-  #         path: /v1/example
-  #         method: get
-
-# Centralized IAM Role definitions (or per-function roles using 'iamRoleStatements')
-# For production safety, we define explicit permissions per-function.
-# This section will be populated as we define specific infrastructure needs.
-# resources:
-#   Resources:
-#     ExampleFunctionRole:
-#       Type: AWS::IAM::Role
-#       Properties:
-#         ...
+  create-user:
+    handler: src/infra/handlers/http/create-user.handler
+    environment:
+      USERS_TABLE_NAME: ${self:service}-${self:provider.stage}-users-table
+      EVENT_BUS_NAME: ${self:service}-${self:provider.stage}-bus
+    events:
+      - httpApi:
+          path: /v1/users
+          method: post
+  user-created-listener:
+    handler: src/infra/handlers/events/user-created.handler
+    events:
+      - eventBridge:
+          eventBus: ${self:service}-${self:provider.stage}-bus
+          pattern:
+            source:
+              - aws.starter.users
+            detail-type:
+              - UserCreated
 
 outputs:
   ServiceEndpoint:
