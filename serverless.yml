@@ -3,14 +3,53 @@ service: aws-serverless-starter
 provider:
   name: aws
   runtime: nodejs24.x
-  region: us-east-1
+  region: ${opt:region, 'us-east-1'}
   stage: ${opt:stage, 'dev'}
 
-# Serverless Framework v4 native TypeScript build
+  # Global tagging for cost management and organization
+  stackTags:
+    Project: aws-serverless-starter
+    Stage: ${self:provider.stage}
+    ManagedBy: ServerlessFramework
+
+  # Enforce logging standards
+  logRetentionInDays: 30
+
+  # Global Environment Variables
+  environment:
+    STAGE: ${self:provider.stage}
+    NODE_OPTIONS: --enable-source-maps
+
+# Serverless Framework v4 native build optimization
 package:
   individually: true
+  patterns:
+    - '!node_modules/aws-sdk/**' # SDK v3 is bundled in Lambda runtime
+    - 'dist/**'
 
 functions:
-  # Handlers will be defined here in later phases
-  dummy:
-    handler: src/infra/handlers/http/dummy.handler
+  # Examples of function-level configuration with IAM roles
+  # We will populate these as we develop the core logic.
+
+  # example-function:
+  #   handler: src/infra/handlers/http/example.handler
+  #   role: ExampleFunctionRole
+  #   events:
+  #     - httpApi:
+  #         path: /v1/example
+  #         method: get
+
+# Centralized IAM Role definitions (or per-function roles using 'iamRoleStatements')
+# For production safety, we define explicit permissions per-function.
+# This section will be populated as we define specific infrastructure needs.
+# resources:
+#   Resources:
+#     ExampleFunctionRole:
+#       Type: AWS::IAM::Role
+#       Properties:
+#         ...
+
+outputs:
+  ServiceEndpoint:
+    Description: URL of the API Gateway Endpoint
+    Value: !Sub "https://${HttpApi}.execute-api.${self:provider.region}.amazonaws.com"
