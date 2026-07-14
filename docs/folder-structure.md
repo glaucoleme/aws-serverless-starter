@@ -10,6 +10,11 @@ Below is the complete tree layout, followed by details of what belongs in each d
 
 ```
 aws-serverless-starter/
+├── .agents/                  # Antigravity agent configuration and rules
+│   └── rules/                # Workspace-specific rule definitions
+│       ├── project-rules.md  # Core mandates and project goals
+│       ├── agents-guide.md   # AI contributor standards and guidelines
+│       └── src-rules.md      # Rules specifically targeting the /src folder
 ├── .github/                  # CI/CD Workflows (GitHub Actions)
 │   └── workflows/
 │       └── ci-cd.yml         # CI checking (lint, format, test) & Dev Deployments
@@ -22,7 +27,6 @@ aws-serverless-starter/
 │   ├── development-roadmap.md
 │   └── future-roadmap.md
 ├── src/                      # Main application directory
-│   ├── GEMINI.md             # Subdirectory instructions and guidelines
 │   ├── core/                 # Decoupled core business domain
 │   │   ├── domain/           # Entities, value objects, pure domain types, validation
 │   │   │   ├── user.ts       # E.g., User entity definition and pure validator
@@ -55,7 +59,6 @@ aws-serverless-starter/
 │   ├── integration/          # Integration tests (AWS clients, DynamoDB interaction)
 │   └── architecture/         # Architecture boundary assertions (prevent layer leaks)
 ├── biome.json                # Biome configuration (formatter, linter, import sorter)
-├── GEMINI.md                 # Root repo guidelines for LLMs and developers
 ├── package.json              # Project manifests & dependencies configuration
 ├── serverless.yml            # Serverless Framework configuration
 └── tsconfig.json             # TypeScript compiler settings

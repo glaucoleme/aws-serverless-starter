@@ -67,13 +67,13 @@ Please see our [Development Roadmap](docs/development-roadmap.md) to understand 
 *   [**Naming Conventions**](docs/naming-conventions.md)
 *   [**Development Roadmap**](docs/development-roadmap.md)
 *   [**Future Roadmap**](docs/future-roadmap.md)
-*   [**AI Contributor Guide (AGENTS.md)**](AGENTS.md)
+*   [**AI Contributor Guide**](.agents/rules/agents-guide.md)
 
 ---
 
 ## Contributing
 
-We welcome contributions! Please review our [AI Contributor Guide](AGENTS.md) to understand our engineering standards, architectural boundaries, and coding conventions. All code must pass Biome linting and all unit tests before submission.
+We welcome contributions! Please review our [AI Contributor Guide](.agents/rules/agents-guide.md) to understand our engineering standards, architectural boundaries, and coding conventions. All code must pass Biome linting and all unit tests before submission.
 
 ## License
 

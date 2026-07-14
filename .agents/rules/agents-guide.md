@@ -1,3 +1,9 @@
+---
+name: agents-guide
+description: AI contributor guide detailing coding standards, layer boundaries, testing, and review expectations.
+alwaysApply: true
+---
+
 # AGENTS.md: AI Contributor Guide
 
 Welcome. This document instructs AI coding assistants on the standards, architecture, and principles of the `aws-serverless-starter` project. **Strict adherence is mandatory.**
@@ -40,7 +46,7 @@ We combine **Clean Architecture** with **Functional Programming (FP)**.
     *   Unit tests: Fast, isolated, fully mocked.
     *   Integration tests: Isolated, use mock client drivers.
     *   Architecture tests: Enforce layer boundary rules (no illegal imports).
-*   **Documentation:** Maintain up-to-date ADRs in `docs/` and adhere to `GEMINI.md` project rules.
+*   **Documentation:** Maintain up-to-date ADRs in `docs/` and adhere to `.agents/rules/project-rules.md` project rules.
 *   **Dependencies:** "Zero Unnecessary Dependencies." Before adding a library, verify its absolute necessity or consult existing conventions.
 
 ---
@@ -55,6 +61,6 @@ We combine **Clean Architecture** with **Functional Programming (FP)**.
 
 ## Mandatory Guidance
 Before taking action, always consult:
-1. `src/GEMINI.md` for layer rules.
-2. `GEMINI.md` for repo-wide mandates.
+1. `.agents/rules/src-rules.md` for layer rules.
+2. `.agents/rules/project-rules.md` for repo-wide mandates.
 3. `docs/architectural-decisions.md` for established design rationale.

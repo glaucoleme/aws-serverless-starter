@@ -1,3 +1,9 @@
+---
+name: project-rules
+description: Core technical mandates, architecture overview, and project goals for aws-serverless-starter.
+alwaysApply: true
+---
+
 # Project Instructions: aws-serverless-starter
 
 You are contributing to **aws-serverless-starter**, a production-ready open source starter for building AWS Serverless applications.

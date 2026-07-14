@@ -1,3 +1,10 @@
+---
+name: src-rules
+description: Specific architectural boundary rules, FP standards, error handling, and middleware policy for the /src directory.
+globs: ["src/**/*"]
+alwaysApply: true
+---
+
 # Subdirectory Instructions: Application Source (`/src`)
 
 This guide outlines specific constraints and coding standards for all modules written inside the `/src` directory.
@@ -60,4 +67,3 @@ We use Middy for infrastructure-level concerns. To prevent architectural decay:
 - **Constraint:** Middleware MUST NOT contain business logic, database lookups, or external service calls.
 - **Scope:** Reserved strictly for input parsing, output serialization, CORS, logging, and stateless request context (e.g., parsing JWT headers).
 - **Enforcement:** Always use the standard `createHandler` factory defined in `src/infra/handlers/` to wrap handlers. Never manually import and apply Middy middleware directly in individual files.
-
