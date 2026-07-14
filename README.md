@@ -38,14 +38,16 @@ A production-ready, open-source boilerplate for building scalable, robust, and c
 
 This project strictly adheres to Clean Architecture boundaries. Business logic is pure and entirely independent of AWS infrastructure.
 
-```text
-[ Infra (Handlers, DDB Gateways, AWS Clients) ]
-                    ↓
-   [ Adapters (Controllers, Presenters) ]
-                    ↓
-[ Core: Use Cases (FP, Pipeline, Result Return) ]
-                    ↓
-     [ Core: Domain (Pure entities & types) ]
+```mermaid
+flowchart TD
+    Infra["Infra (Handlers, DDB Gateways, AWS Clients)"]
+    Adapters["Adapters (Controllers, Presenters)"]
+    UseCases["Core: Use Cases (FP, Pipeline, Result Return)"]
+    Domain["Core: Domain (Pure entities & types)"]
+
+    Infra --> Adapters
+    Adapters --> UseCases
+    UseCases --> Domain
 ```
 
 *See [Project Folder Structure](docs/folder-structure.md) for full implementation details.*
