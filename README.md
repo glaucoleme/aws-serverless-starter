@@ -1,4 +1,4 @@
-git r# AWS Serverless Starter
+# AWS Serverless Starter
 
 ![Build Status](https://img.shields.io/badge/build-pending-yellow)
 ![License](https://img.shields.io/badge/license-MIT-blue)
